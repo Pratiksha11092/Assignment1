@@ -1,0 +1,89 @@
+<html>
+
+<head>
+
+  
+ 
+  <script>
+    function registrationFun () {
+      var name = document.forms.RegForm.Name.value;
+      var email = document.forms.RegForm.EMail.value;
+      var phone = document.forms.RegForm.Telephone.value;
+
+      var regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
+      var regPhone = /^(\+{0,})(\d{0,})([(]{1}\d{1,3}[)]{0,}){0,}(\s?\d+|\+\d{2,3}\s{1}\d+|\d+){1}[\s|-]?\d+([\s|-]?\d+){1,2}(\s){0,}$/;
+      var regName = /^([a-z]{4,})+\s+([a-z\s]{4,})+$/i;
+
+      if (name == "" || !regName.test(name)) {
+        window.alert("Please enter your full name properly.");
+        name.focus();
+        return false;
+      }
+
+
+
+      if (email == "" || !regEmail.test(email)) {
+        window.alert("Please enter a valid mail address.");
+        email.focus();
+        return false;
+      }
+
+      if (phone == "" || !regPhone.test(phone)) {
+        alert("Please enter valid phone number.");
+        phone.focus();
+        return false;
+      }
+
+      var val = Math.floor(1000 + Math.random() * 9000);
+      console.log(val)
+      window.location = "./welcome.html";
+    }
+  </script>
+
+  <style>
+    div {
+      box-sizing: border-box;
+      width: 100%;
+      border: 100px solid black;
+      float: left;
+      align-content: center;
+      align-items: center;
+    }
+
+    form {
+      margin: 0 auto;
+      width: 600px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align: center;">REGISTRATION FORM</h1>
+  <form name="RegForm" method="post">
+
+    <p>Full Name: <input type="text" name="fullName" onkeypress="return (event.charCode > 64  
+	event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" 
+	 size="65"></p>
+
+    <br />
+
+    <br />
+
+    <p>E-mail Address: <input type="text" size="65" name="EMail" /></p>
+
+    <br />
+
+
+    <p>Telephone: <input type="text" maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" size="65" name="Telephone" /></p>
+
+    <br />
+
+    <p>
+      <input type="button" value="submit" onclick="registrationFun()" name=" Submit" />
+      <input type="reset" value="reset" name="reset" />
+    </p>
+
+  </form>
+</body>
+
+</html>
